@@ -1,4 +1,4 @@
-# Codepen.io Project Repository
+# Codepen.io Projects Repository
 
 Here I collect the code used on my [Codepen.io](https://codepen.io/alipanick) profile.
 
