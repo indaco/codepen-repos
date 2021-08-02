@@ -3,22 +3,26 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --left-overlay-fill: rgba(87, 84, 236, 0.7);
-    --right-overlay-fill: rgba(43, 43, 43, 0.8);
-    --left-button-hover-color: rgba(87, 84, 236, 1);
-    --right-button-hover-color: rgba(28, 122, 28, 1);
-  }
+	:root {
+		--left-overlay-fill: rgba(87, 84, 236, 0.7);
+		--right-overlay-fill: rgba(43, 43, 43, 0.8);
+		--left-button-hover-color: rgba(87, 84, 236, 1);
+		--right-button-hover-color: rgba(28, 122, 28, 1);
+	}
+}
+
+[x-cloak] {
+	display: none !important;
 }
 
 .animated-bg {
-  @apply h-auto bg-gradient-to-r from-gray-100 to-gray-200 motion-safe:animate-pulse;
+	@apply h-auto bg-gradient-to-r from-gray-100 to-gray-200 motion-safe:animate-pulse;
 }
 
 .animated-bg-text {
-  @apply inline-block w-full h-3 max-w-full m-0 rounded-md;
+	@apply inline-block w-full h-3 max-w-full m-0 rounded-md;
 }
 
 .hasFocus {
-  @apply transform -translate-y-8 text-lightBlue-500;
+	@apply transform -translate-y-8 text-lightBlue-500;
 }

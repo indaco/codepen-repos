@@ -29,8 +29,8 @@
 		<link rel="stylesheet" href="assets/build/css/styles.css" media="screen" />
 		<!-- JS LIBS AND SCRIPTS -->
 		<script
-			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
 			defer
+			src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
 		></script>
 		<script src="assets/js/main.js"></script>
 	</head>
@@ -59,7 +59,7 @@
 				<!--  main wrapper -->
 				<div class="flex-1 min-w-0 bg-white xl:flex">
 					<!-- Projects List -->
-					<div class="bg-white lg:min-w-0 lg:flex-1" x-data="projectListData()">
+					<div class="bg-white lg:min-w-0 lg:flex-1" x-data="projectList">
 						<div
 							class="pt-4 pb-4 pl-4 pr-6 border-b border-gray-200  sm:pl-6 lg:pl-8 xl:pl-6 xl:pt-6 xl:border-t-0"
 						>
@@ -70,7 +70,7 @@
 						<ul
 							class="relative z-0 border-b border-gray-200 divide-y divide-gray-200 "
 						>
-							<template x-for="project in projects" :key="project.id">
+							<template x-for="project in projects" :key="project.id" x-cloak>
 								<li
 									class="relative py-5 pl-4 pr-6  hover:bg-gray-50 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6"
 								>
@@ -131,7 +131,7 @@
 													/>
 												</svg>
 												<span class="text-sm font-medium text-gray-500">
-													Created on:
+													Created:
 													<time
 														datetime="2020-12-02"
 														x-text="project.created_on"
@@ -154,7 +154,7 @@
 													/>
 												</svg>
 												<span class="text-sm font-medium text-gray-500">
-													Updated on:
+													Last updated:
 													<time
 														datetime="2020-12-02"
 														x-text="project.updated_on"
@@ -208,7 +208,7 @@
 											<p class="flex space-x-2 text-sm text-gray-500">
 												<template
 													x-for="(ans, index) in project.tags"
-													:key="`item-ans-{$index}`"
+													:key="index"
 												>
 													<a
 														href="#"

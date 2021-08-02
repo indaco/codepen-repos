@@ -1,7 +1,5 @@
 function projectListData() {
 	return {
-		selected: undefined,
-		active: undefined,
 		projects: [
 			{
 				id: '01',
@@ -154,8 +152,12 @@ function projectListData() {
 				link: '17_Images_Carousel/index.html',
 				tags: ['carousel', 'x-ref'],
 				created_on: 'Jun 14, 2021',
-				updated_on: '',
+				updated_on: 'August 1, 2021',
 			},
 		],
 	};
 }
+
+document.addEventListener('alpine:init', () => {
+	Alpine.data('projectList', projectListData);
+});
