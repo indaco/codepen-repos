@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Carousel</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Muli&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href="../assets/build/css/styles.css"
+			media="screen"
+		/>
+		<style>
+			.snap {
+				-ms-scroll-snap-type: x mandatory;
+				scroll-snap-type: x mandatory;
+				-ms-overflow-style: none;
+				scroll-behavior: smooth;
+			}
+			.snap::-webkit-scrollbar {
+				display: none;
+			}
+
+			.snap > div {
+				scroll-snap-align: center;
+			}
+		</style>
+		<script src="//unpkg.com/alpinejs" defer></script>
+	</head>
+	<body>
+		<div class="flex flex-col max-w-5xl mx-auto my-4" x-data="imagesCarousel()">
+			<div
+				class="relative flex flex-no-wrap w-full mx-auto overflow-auto transition-all  snap"
+				x-ref="slider"
+				x-on:scroll.debounce="active = Math.round($event.target.scrollLeft / ($event.target.scrollWidth / photos.length))"
+			>
+				<template x-for="photo in photos" :key="photo.id">
+					<div
+						class="relative flex flex-col items-center justify-center flex-shrink-0 w-full text-gray-800 bg-gray-200 "
+					>
+						<figure>
+							<source type="image/avif" x-bind:srcset="`${photo.src}.avif`" />
+							<source type="image/webp" x-bind:srcset="`${photo.src}.webp`" />
+							<img
+								x-bind:src="`${photo.src}.jpg`"
+								loading="lazy"
+								decoding="async"
+								x-bind:alt="photo.title"
+								x-bind:title="photo.alt"
+								class="object-cover object-center w-full rounded-lg shadow-md"
+							/>
+						</figure>
+						<span
+							class="absolute w-full p-2 text-lg text-center text-gray-900 bg-gray-200 rounded  bottom-3 opacity-70"
+							x-text="photo.alt"
+						></span>
+					</div>
+				</template>
+			</div>
+			<div class="relative flex items-center justify-center flex-1 p-4 mt-2">
+				<button
+					class="flex items-center justify-center w-8 h-8 mr-1 bg-gray-200 rounded-full  focus:outline-none focus:ring-2 focus:ring-gray-300"
+					x-on:click=" $refs.slider.scrollLeft = $refs.slider.scrollLeft - ($refs.slider.scrollWidth / photos.length)"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="w-5 h-5"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</button>
+
+				<template x-for="photo in photos" :key="photo.id">
+					<span
+						class="flex items-center justify-center w-8 h-8 mx-1 font-semibold text-gray-700 bg-gray-200 bg-opacity-25 rounded-full select-none "
+						x-bind:class="{'bg-opacity-100 ring-1 ring-gray-300': active === (photo.id - 1) }"
+						x-text="photo.id"
+					></span>
+				</template>
+
+				<button
+					class="flex items-center justify-center w-8 h-8 mr-1 bg-gray-200 rounded-full  focus:outline-none focus:ring-2 focus:ring-gray-300"
+					x-on:click="$refs.slider.scrollLeft = $refs.slider.scrollLeft + ($refs.slider.scrollWidth / photos.length)"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="w-5 h-5"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<script src="./script.js"></script>
+	</body>
+</html>

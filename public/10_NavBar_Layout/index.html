@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NavBar Layout by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body>
+    <header x-data="{isOpen: false}" class="md:my-2">
+      <button
+        :aria-expanded="isOpen"
+        aria-controls="nav-list"
+        @click="isOpen = !isOpen;"
+        class="inline-block w-8 h-8 p-1 mx-auto text-gray-600 bg-gray-200  md:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+      <nav
+        aria-labelledby="nav-heading"
+        :aria-expanded="isOpen"
+        class="mt-2 md:mt-0"
+      >
+        <ul
+          id="nav-list"
+          :class="{ 'flex' : isOpen , 'hidden' : !isOpen}"
+          @click.away="isOpen = false"
+          class="flex-col items-start justify-center hidden w-full px-8 py-4 mx-auto space-x-0 space-y-2 text-xl border-4 border-blue-300 rounded-lg  md:space-y-0 md:items-center md:max-w-md md:flex md:flex-row md:space-x-6"
+        >
+          <li class="hover:underline">Home</li>
+          <li class="hover:underline">About</li>
+          <li class="hover:underline">Services</li>
+          <li class="hover:underline">Contact</li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

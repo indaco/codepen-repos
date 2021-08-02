@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dad Jokes by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center h-screen p-5 m-0 overflow-y-hidden bg-indigo-500  font-body"
+  >
+    <div
+      class="flex flex-col items-center justify-center w-8/12 max-w-full px-5 py-12 bg-white shadow-lg  rounded-xl"
+      x-data="jokes()"
+    >
+      <h3 class="m-0 text-xl font-bold tracking-wider opacity-50">
+        Don't Laugh Challenge
+      </h3>
+      <div
+        id="joke"
+        x-ref="joke"
+        class="max-w-lg mx-auto my-12 text-3xl leading-10 tracking-wide"
+        x-text="jokeText"
+      ></div>
+      <button
+        id="jokeBtn"
+        class="px-10 py-3 text-lg antialiased text-white transform bg-purple-400 border-0 rounded-lg shadow-xl cursor-pointer  focus:outline-none hover:scale-95"
+        @click="generateJoke()"
+      >
+        Get Another Joke
+      </button>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

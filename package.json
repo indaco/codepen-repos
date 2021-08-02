@@ -1,0 +1,45 @@
+{
+  "name": "vite-tailwind-jit-starter",
+  "version": "1.0.0",
+  "description": "A strater repo to work with Vite and Tailwind (JIT enabled)",
+  "main": "index.js",
+  "scripts": {
+    "build:tailwind": "NODE_ENV=development postcss ./assets/css/tailwind.css -o ./public/assets/build/css/styles.css -w --verbose",
+    "build:dev": "TAILWIND_MODE=build NODE_ENV=development postcss ./assets/css/tailwind.css -o ./public/assets/build/css/styles.css -w --verbose",
+    "build:prod": "TAILWIND_MODE=build NODE_ENV=production postcss ./assets/css/tailwind.css -o ./public/assets/build/css/styles.css -w --verbose",
+    "dev-server": "NODE_ENV=development vite public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsanelab/vite-tailwind-jit-starter.git"
+  },
+  "keywords": [
+    "vite",
+    "tailwind",
+    "tailwind-jit",
+    "alpine.js",
+    "50-projects-50-days",
+    "web-development",
+    "learning"
+  ],
+  "author": "nsanelab.dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nsanelab/vite-tailwind-jit-starter/issues"
+  },
+  "homepage": "https://github.com/nsanelab/vite-tailwind-jit-starter#readme",
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.3.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-tailwindcss": "^1.14.1",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.3.2",
+    "tailwindcss": "^2.2.7",
+    "vite": "^2.4.4"
+  }
+}

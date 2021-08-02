@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Progress Steps by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body class="w-full h-screen p-0 m-0 overflow-hidden">
+    <div class="flex flex-col max-w-3xl mx-auto my-20">
+      <div id="container" class="mx-auto my-10 text-center" x-data="stepper()">
+        <div
+          id="progress-container"
+          class="flex justify-between relative mb-8 max-w-full w-[350px]"
+        >
+          <div
+            id="progress-before"
+            class="
+              absolute
+              left-0
+              w-[350px]
+              h-1
+              transform
+              -translate-y-1/2
+              bg-gray-300
+              top-1/2
+              -z-1
+            "
+            aria-hidden="true"
+          ></div>
+          <div
+            id="progress"
+            class="absolute left-0 z-0 h-1 transform -translate-y-1/2 bg-blue-500  top-1/2"
+            x-bind:style="`width: ${progressPercentage};  transition: 0.4s ease;`"
+          ></div>
+
+          <template x-for="index in items" :key="index">
+            <div
+              class="z-10 flex items-center justify-center w-8 h-8 text-gray-400 transition duration-500 ease-linear border-4 rounded-full  bg-gray-50"
+              x-bind:class=" currentActive === index ? 'border-blue-500' : 'border-gray-300' "
+              x-text="index"
+            ></div>
+          </template>
+        </div>
+        <button
+          id="prev"
+          class="px-8 py-2 m-1 text-sm text-white border-0 rounded-lg  focus:outline-none focus:ring-2 focus:ring-offset-1"
+          x-bind:class=" currentActive === 1 ? ' bg-gray-300  cursor-not-allowed' : 'bg-blue-500 cursor-pointer transform scale-90 focus:ring-blue-300' "
+          x-bind:disabled="currentActive == 1"
+          x-spread="prev"
+        >
+          Prev
+        </button>
+        <button
+          id="next"
+          class="px-8 py-2 m-1 text-sm text-white bg-blue-500 border-0 rounded-lg cursor-pointer  focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-300"
+          x-spread="next"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

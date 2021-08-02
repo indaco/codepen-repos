@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Keycodes by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body>
+    <div
+      class="flex items-center justify-center h-screen m-0 overflow-hidden text-center bg-gray-200  font-body"
+      x-data="keydownCode()"
+    >
+      <div id="insert" x-on:keydown.window="getInfo($event)">
+        <template x-if="atStart">
+          <div
+            style="min-width: 150px"
+            class="relative inline-flex items-center p-5 font-bold text-center bg-gray-100 border-2 border-gray-600 shadow-lg  m-3text-xl"
+          >
+            Press any key to get the keyCode
+          </div>
+        </template>
+
+        <template x-text="eventKey" x-if="!atStart">
+          <div>
+            <div
+              x-html="eventKey"
+              style="min-width: 100px"
+              class="relative inline-flex items-center p-5 m-3 text-xl font-bold text-center bg-gray-100 border-2 border-gray-600 shadow-lg "
+            ></div>
+            <div
+              x-html="eventKeyCode"
+              style="min-width: 100px"
+              class="relative inline-flex items-center p-5 m-3 text-xl font-bold text-center bg-gray-100 border-2 border-gray-600 shadow-lg "
+            ></div>
+            <div
+              x-html="eventCode"
+              style="min-width: 100px"
+              class="relative inline-flex items-center p-5 m-3 text-xl font-bold text-center bg-gray-100 border-2 border-gray-600 shadow-lg "
+            ></div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blurry Loading by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body>
+    <div
+      x-data="blurry()"
+      x-init="init()"
+      class="flex flex-col items-center justify-center h-screen mx-auto my-0 overflow-hidden  font-body"
+    >
+      <section
+        x-ref="bg"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1595449249872-ded5c9aff37c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxhbGx8fHx8fHx8fHwxNjE4NDc0MTU2&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit');
+        "
+        class="absolute top-0 left-0 w-full h-screen bg-center bg-no-repeat bg-cover  -z-1"
+      ></section>
+      <div
+        class="text-5xl text-white"
+        x-text="`${percentage}%`"
+        x-bind:style=" `opacity: ${scaleFunc(percentage,0,100,1,0)};` "
+      ></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

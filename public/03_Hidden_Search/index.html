@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Search by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body
+    class="flex items-center justify-center h-screen m-0 overflow-hidden  bg-gradient-to-r from-indigo-500 to-purple-600 font-display"
+  >
+    <div class="relative h-12" x-data="{ open: false }">
+      <input
+        type="text"
+        class="h-12 p-4 text-base bg-white border-0 focus:outline-none"
+        x-bind:class="open ? 'w-52' : 'w-12'"
+        x-ref="searchInput"
+        style="transition: width 0.3s ease"
+        placeholder="Search..."
+      />
+      <button
+        class="absolute top-0 left-0 flex items-center justify-center w-12 h-12 text-2xl transition-transform duration-300 ease-out bg-white border-0 cursor-pointer  focus:outline-none"
+        x-bind:class="{  'transform translate-x-52' : open }"
+        @click="open = !open; $refs.searchInput.focus()"
+      >
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </body>
+</html>

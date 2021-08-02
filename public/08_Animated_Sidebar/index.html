@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Sidebar by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center h-screen font-body"
+    x-cloak
+    x-data="{ open: false }"
+  >
+    <!-- OPEN MENU BUTTON -->
+    <button
+      id="open-btn"
+      class="fixed bg-transparent border-0 cursor-pointer top-4 left-4"
+      @click="open = !open"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+    <!-- END OF OPEN MENU BUTTON -->
+
+    <!-- CENTERED CONTENT -->
+    <img
+      class="w-40"
+      src="https://staging.outincanberra.com.au/wp-content/uploads/2020/02/sample-logo.jpg"
+      alt="Logo"
+      width="160"
+      height="160"
+    />
+
+    <p class="my-4 text-lg antialiased text-gray-700 uppercase">
+      Animated Sidebar
+    </p>
+    <!-- END OF CENTERD CONTENT -->
+
+    <!-- SIDEBAR NAV -->
+    <div
+      id="blue-nav"
+      class="fixed top-0 left-0 h-screen max-w-md transition-transform duration-300 ease-in-out transform bg-blue-800  w-80"
+      x-bind:class="open ?'translate-x-0' : 'delay-500 -translate-x-full'"
+    >
+      <div
+        id="gray-nav"
+        class="fixed top-0 left-0 w-11/12 h-screen transition-transform duration-300 ease-in-out delay-200 transform bg-gray-300 "
+        x-bind:class="open ?' translate-x-0' : '-translate-x-full'"
+      >
+        <div
+          id="white-nav"
+          class="relative top-0 left-0 w-11/12 h-screen p-10 transition-transform duration-300 ease-in-out transform bg-white "
+          x-bind:class="open ?'delay-500 translate-x-0 ' : '-translate-x-full'"
+        >
+          <button
+            id="close-btn"
+            class="absolute opacity-50 top-10 right-8"
+            @click="open = !open"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+
+          <img
+            class="w-20"
+            src="https://staging.outincanberra.com.au/wp-content/uploads/2020/02/sample-logo.jpg"
+            alt="Logo"
+            width="96"
+            height="96"
+          />
+
+          <ul id="menu-list" class="p-0">
+            <li class="mx-0 my-5 text-sm">
+              <a
+                href="#"
+                class="text-sm antialiased font-semibold text-blue-800 uppercase "
+                >Products</a
+              >
+            </li>
+            <li class="mx-0 my-5">
+              <a
+                class="text-sm antialiased font-semibold text-blue-800 uppercase "
+                href="#"
+                >Services</a
+              >
+            </li>
+            <li class="mx-0 mt-5 text-sm">
+              <a
+                href="#"
+                class="text-sm antialiased font-semibold text-blue-800 uppercase "
+                >About Us</a
+              >
+            </li>
+            <li class="mx-0 text-sm">
+              <ul class="flex flex-col p-5 text-blue-800">
+                <li
+                  class="inline-flex items-center mx-0 my-1 space-x-1 text-sm"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-3 h-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="text-sm antialiased text-blue-800 uppercase"
+                    >Culture</a
+                  >
+                </li>
+                <li
+                  class="inline-flex items-center mx-0 my-1 space-x-1 text-sm"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-3 h-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="text-sm antialiased text-blue-800 uppercase"
+                    >Dreams</a
+                  >
+                </li>
+                <li
+                  class="inline-flex items-center mx-0 my-1 space-x-1 text-sm"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-3 h-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="text-sm antialiased text-blue-800 uppercase"
+                    >Blog</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END OF SIDEBAR NAV -->
+  </body>
+</html>

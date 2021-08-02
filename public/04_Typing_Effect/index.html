@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Effect by alipanick</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/build/css/styles.css"
+      media="screen"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  </head>
+  <body>
+    <div
+      x-data="autoTextEffect()"
+      x-init="init()"
+      class="flex flex-col items-center justify-center h-screen m-0 overflow-hidden font-bold bg-indigo-500  font-display"
+    >
+      <h1 x-ref="textEl" class="text-3xl">Starting...</h1>
+      <div class="absolute px-4 py-3 text-lg bg-black bottom-5 bg-opacity-10">
+        <label for="speed">Speed:</label>
+        <input
+          type="number"
+          name="speedEl"
+          x-ref="speedEl"
+          value="1"
+          @input="speed = (300 / $event.target.value)"
+          min="1"
+          max="10"
+          step="1"
+          class="w-12 p-1 text-lg text-center border-none  bg-darksalmon focus:outline-none"
+        />
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

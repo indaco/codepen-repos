@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Before After Image Slider by alipanick</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="../assets/build/css/styles.css"
+      media="screen"
+    />
+    <style>
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 6px;
+        height: 500px;
+        background: white;
+        cursor: pointer;
+      }
+
+      input[type='range']::-moz-range-thumb {
+        width: 6px;
+        height: 500px;
+        background: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <div
+      x-data="{sliderPos:50}"
+      class="flex items-center justify-center h-screen m-0"
+    >
+      <div
+        class="relative border-2 border-gray-200 w-4xl"
+        style="width: 800px; height: 600px"
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-full"
+          style="
+            background-image: url('https://source.unsplash.com/random/800x600');
+            background-size: 800px 100%;
+          "
+        ></div>
+        <div
+          id="foreground-img"
+          class="absolute top-0 left-0 h-full filter grayscale"
+          :style="`background-image: url('https://source.unsplash.com/random/800x600'); background-size: 800px 100%; width: ${sliderPos}%;`"
+        ></div>
+
+        <input
+          type="range"
+          x-on:input="sliderPos = $event.target.value"
+          x-on:change="sliderPos = $event.target.value"
+          min="1"
+          max="100"
+          value="50"
+          class="absolute z-10 flex items-center justify-center w-full h-full m-0 transition-all duration-200 outline-none appearance-none  opacity-30 hover:opacity-10 slider-thumb"
+        />
+
+        <div
+          class="absolute inline-block h-full p-1 border-t-0 border-b-0 border-l-2 border-r-0 border-white "
+          :style="`left: ${sliderPos}%;`"
+          aria-hidden="true"
+        ></div>
+        <div
+          id="sliderButton"
+          class="absolute z-10 flex items-center justify-center p-1 bg-white border border-gray-100 rounded-full pointer-events-none  w-7 h-7"
+          :style="`left: calc(${sliderPos}% - 14px); top: calc(50% - 14px)`"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
