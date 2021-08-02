@@ -17,7 +17,7 @@ function projectListData() {
 				link: '02_Animated_Progress_Steps/index.html',
 				tags: ['pseudo-classes', 'aria-hidden', 'x-spread', 'x-bind'],
 				created_on: 'April 14, 2021',
-				updated_on: 'April 15, 2021',
+				updated_on: 'August 2, 2021',
 			},
 			{
 				id: '03',
