@@ -29,4 +29,3 @@ function initCarousel() {
 document.addEventListener('alpine:init', () => {
 	Alpine.data('carousel', initCarousel);
 });
-Alpine.start();
