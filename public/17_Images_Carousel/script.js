@@ -1,4 +1,4 @@
-function imagesCarousel() {
+function initCarousel() {
 	return {
 		active: 0,
 		photos: [
@@ -25,3 +25,8 @@ function imagesCarousel() {
 		],
 	};
 }
+
+document.addEventListener('alpine:init', () => {
+	Alpine.data('carousel', initCarousel);
+});
+Alpine.start();

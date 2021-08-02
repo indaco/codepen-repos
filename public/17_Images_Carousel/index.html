@@ -40,38 +40,38 @@
 				scroll-snap-align: center;
 			}
 		</style>
-		<script src="//unpkg.com/alpinejs" defer></script>
+		<script
+			defer
+			src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+		></script>
 	</head>
 	<body>
-		<div class="flex flex-col max-w-5xl mx-auto my-4" x-data="imagesCarousel()">
+		<div class="flex flex-col max-w-5xl mx-auto my-4" x-data="carousel">
 			<div
-				class="relative flex flex-no-wrap w-full mx-auto overflow-auto transition-all  snap"
+				class="relative flex flex-no-wrap w-full mx-auto overflow-auto transition-all rounded-lg  snap"
 				x-ref="slider"
 				x-on:scroll.debounce="active = Math.round($event.target.scrollLeft / ($event.target.scrollWidth / photos.length))"
 			>
-				<template x-for="photo in photos" :key="photo.id">
-					<div
-						class="relative flex flex-col items-center justify-center flex-shrink-0 w-full text-gray-800 bg-gray-200 "
-					>
+				<template x-for="photo in photos">
+					<div class="relative flex-shrink-0 w-full">
 						<figure>
-							<source type="image/avif" x-bind:srcset="`${photo.src}.avif`" />
-							<source type="image/webp" x-bind:srcset="`${photo.src}.webp`" />
 							<img
-								x-bind:src="`${photo.src}.jpg`"
+								x-bind:src="photo.src"
 								loading="lazy"
 								decoding="async"
 								x-bind:alt="photo.title"
 								x-bind:title="photo.alt"
 								class="object-cover object-center w-full rounded-lg shadow-md"
 							/>
+							<figcaption
+								class="absolute bottom-0 left-0 right-0 top-auto w-full px-4 py-1 text-sm font-semibold text-left text-gray-900 transition delay-100 bg-gray-200  opacity-70"
+								x-text=" photo.alt"
+							></figcaption>
 						</figure>
-						<span
-							class="absolute w-full p-2 text-lg text-center text-gray-900 bg-gray-200 rounded  bottom-3 opacity-70"
-							x-text="photo.alt"
-						></span>
 					</div>
 				</template>
 			</div>
+
 			<div class="relative flex items-center justify-center flex-1 p-4 mt-2">
 				<button
 					class="flex items-center justify-center w-8 h-8 mr-1 bg-gray-200 rounded-full  focus:outline-none focus:ring-2 focus:ring-gray-300"
